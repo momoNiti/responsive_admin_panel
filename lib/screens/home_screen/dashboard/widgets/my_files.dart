@@ -3,6 +3,7 @@ import 'package:responsive_admin_panel/models/my_files.dart';
 import 'package:responsive_admin_panel/screens/home_screen/dashboard/widgets/my_file_info_card.dart';
 import 'package:responsive_admin_panel/utility/constants.dart';
 import 'package:responsive_admin_panel/utility/responsive.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class MyFiles extends StatelessWidget {
   const MyFiles({
@@ -30,9 +31,7 @@ class MyFiles extends StatelessWidget {
                       defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
-              onPressed: () {
-                print("Add new");
-              },
+              onPressed: () => _onAddNewMyFilePressed(context),
               icon: Icon(Icons.add),
               label: Text("Add new"),
             ),
@@ -65,6 +64,38 @@ class MyFiles extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _onAddNewMyFilePressed(context) {
+    Alert(
+        context: context,
+        title: "Add new",
+        content: Column(
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                icon: Icon(Icons.account_circle),
+                labelText: 'TEMP',
+              ),
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                icon: Icon(Icons.lock),
+                labelText: 'TEMP',
+              ),
+            ),
+          ],
+        ),
+        buttons: [
+          DialogButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              "Save",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ]).show();
   }
 }
 
