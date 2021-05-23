@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_admin_panel/router/router_app.gr.dart';
+
 import 'widgets/drawer_list_tile.dart';
 
 class SideMenu extends StatelessWidget {
@@ -27,13 +30,17 @@ class SideMenu extends StatelessWidget {
               DrawerListTile(
                 assetName: 'assets/icons/menu_tran.svg',
                 title: "transaction",
-                function: () {},
+                function: () {
+                  context.router.push(
+                    TestScreen(id: "1"),
+                  );
+                },
               ),
               DrawerListTile(
                 assetName: 'assets/icons/menu_task.svg',
                 title: "Task",
                 function: () {
-                  print("Task");
+                  context.router.push(TestThirdScreen(id: "1"));
                 },
               ),
               DrawerListTile(
