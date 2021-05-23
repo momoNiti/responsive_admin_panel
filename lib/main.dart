@@ -3,9 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_admin_panel/controllers/menu_controller.dart';
 import 'package:responsive_admin_panel/router/router.dart';
+import 'package:url_strategy/url_strategy.dart';
+import 'package:velocity_x/velocity_x.dart';
 import './utility/constants.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(MyApp());
 }
 
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => MenuController(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Admin Panel',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
@@ -23,7 +26,9 @@ class MyApp extends StatelessWidget {
               .apply(bodyColor: Colors.white),
           canvasColor: secondaryColor,
         ),
-        onGenerateRoute: RouterApp.generateRoute,
+        routeInformationParser: VxInformationParser(),
+        routerDelegate: RouterApp.routerDelegate,
+        // onGenerateRoute: RouterApp.generateRoute,
       ),
     );
   }

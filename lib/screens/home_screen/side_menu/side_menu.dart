@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_admin_panel/router/router.dart';
 import 'widgets/drawer_list_tile.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -28,7 +30,9 @@ class SideMenu extends StatelessWidget {
                 assetName: 'assets/icons/menu_tran.svg',
                 title: "transaction",
                 function: () {
-                  print("transaction");
+                  context.vxNav.push(Uri(
+                      path: RoutePath.test_screen,
+                      queryParameters: {'id': '1'}));
                 },
               ),
               DrawerListTile(
