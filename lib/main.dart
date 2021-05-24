@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _appRouter = AppRouter();
+  final _routerApp = RouterApp();
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class _MyAppState extends State<MyApp> {
           canvasColor: secondaryColor,
         ),
         // onGenerateRoute: RouterApp.generateRoute,
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _routerApp.delegate(),
+        routeInformationParser: _routerApp.defaultRouteParser(),
       ),
     );
   }

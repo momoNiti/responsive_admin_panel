@@ -31,16 +31,14 @@ class SideMenu extends StatelessWidget {
                 assetName: 'assets/icons/menu_tran.svg',
                 title: "transaction",
                 function: () {
-                  context.router.push(
-                    TestScreen(id: "1"),
-                  );
+                  context.router.push(ProductRouter());
                 },
               ),
               DrawerListTile(
                 assetName: 'assets/icons/menu_task.svg',
                 title: "Task",
                 function: () {
-                  context.router.push(TestThirdScreen(id: "1"));
+                  print("Task");
                 },
               ),
               DrawerListTile(

@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:responsive_admin_panel/router/router.dart';
 import 'package:responsive_admin_panel/screens/home_screen/home_screen.dart';
-import 'package:responsive_admin_panel/screens/test_screen/test_screen.dart';
-import 'package:responsive_admin_panel/screens/test_screen/test_second_screen.dart';
-import 'package:responsive_admin_panel/screens/test_screen/test_third_screen.dart';
+import 'package:responsive_admin_panel/screens/product_screen/detail_screen.dart';
+import 'package:responsive_admin_panel/screens/product_screen/product_screen.dart';
 
 // class RouterApp {
 //   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -34,20 +31,25 @@ import 'package:responsive_admin_panel/screens/test_screen/test_third_screen.dar
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
+    AutoRoute(page: HomeScreen, initial: true),
     AutoRoute(
-      page: HomeScreen,
-    ),
-    AutoRoute(
-      page: TestScreen,
-      path: "detail/:id",
+      page: EmptyRouterPage,
+      path: RoutePath.product_screen, // '/product'
+      name: "ProductRouter",
       children: [
-        AutoRoute(path: 'testInside', page: TestSecondScreen),
+        AutoRoute(path: '', page: ProductScreen),
+        AutoRoute(
+          path: 'detail',
+          page: EmptyRouterPage,
+          name: "DetailRouter",
+          children: [
+            AutoRoute(path: '', page: DetailScreen),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+        RedirectRoute(path: '*', redirectTo: ''),
       ],
-    ),
-    AutoRoute(
-      page: TestThirdScreen,
-      path: "test",
     ),
   ],
 )
-class $AppRouter {}
+class $RouterApp {}
